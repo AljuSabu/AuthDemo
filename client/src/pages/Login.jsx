@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import axios from "axios";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 const Login = () => {
@@ -37,7 +37,7 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast.error(error.response?.data?.message || "Something went wrong");
     }
   };
 
@@ -66,7 +66,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
-                placeholder="abcd@gmail.com"
+                placeholder="name@example.com"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -96,21 +96,21 @@ const Login = () => {
             </button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-slate-100 text-center">
+          <div className="mt-8 pt-6 border-t border-slate-200 text-center">
             <p className="text-sm text-slate-500">
               Don't have an account?{" "}
-              <button
+              <Link
+                to="/signup"
                 className="font-semibold text-indigo-600 hover:underline"
               >
                 Create one
-              </button>
+              </Link>
             </p>
-            <button
-              // onClick={onBack}
-              className="mt-4 text-xs font-medium text-slate-400 hover:text-slate-600 transition-colors"
-            >
-              ← Back to Home
-            </button>
+            <Link to="/">
+              <button className="mt-4 text-xs font-medium text-slate-400 hover:text-slate-600 transition-colors">
+                ← Back to Home
+              </button>
+            </Link>
           </div>
         </div>
       </motion.div>
