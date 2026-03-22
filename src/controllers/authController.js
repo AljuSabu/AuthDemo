@@ -64,7 +64,6 @@ export const signup = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error in Signing Up",
-      error,
     });
   }
 };
@@ -89,7 +88,7 @@ export const login = async (req, res) => {
 
     //Response if user dosent exist
     if (!user) {
-      return res.status(404).json({
+      return res.status(401).json({
         success: false,
         message: "No user found, Please signin",
       });
@@ -100,7 +99,7 @@ export const login = async (req, res) => {
 
     //Response if password dosent match
     if (!isPasswordMatched) {
-      return res.status(400).json({
+      return res.status(401).json({
         success: false,
         message: "Invalid password",
       });
@@ -130,7 +129,6 @@ export const login = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error in loggin",
-      error,
     });
   }
 };
@@ -153,7 +151,6 @@ export const logout = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error in logout",
-      error,
     });
   }
 };
