@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import LoginIcon from "@mui/icons-material/Login";
 import { toast } from "sonner";
 import axios from "axios";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import LoginIcon from "@mui/icons-material/Login";
 
 const Login = () => {
   const [email, setEmail] = useState("");

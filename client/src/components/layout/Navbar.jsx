@@ -1,20 +1,47 @@
 import React, { useContext, useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from "motion/react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { NavLink } from "react-router-dom";
-import { toast } from "sonner";
-import axios from "axios";
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
   const { auth, setAuth } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+
+  // Scroll to features section
+  const scrollToFeatures = () => {
+    navigate("/");
+
+    setTimeout(() => {
+      const section = document.getElementById("features");
+
+      if (section) {
+        const navbarHeight = 80;
+
+        const top =
+          section.getBoundingClientRect().top +
+          window.pageYOffset -
+          navbarHeight;
+
+        window.scrollTo({
+          top,
+          behavior: "smooth",
+        });
+      }
+    }, 100);
+  };
+
   //loggout
-  const handleLoggout = async () => {
+  const handleLogout = async () => {
     try {
       const { data } = await axios.post(
         "http://localhost:5000/api/v1/auth/logout",
@@ -33,6 +60,7 @@ const Navbar = () => {
       toast.error("Something went wrong while logging out");
     }
   };
+
   return (
     <>
       <nav className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-200">
@@ -57,9 +85,12 @@ const Navbar = () => {
                 Home
               </NavLink>
 
-              <div className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">
+              <button
+                onClick={scrollToFeatures}
+                className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
+              >
                 Features
-              </div>
+              </button>
             </div>
 
             {/* Auth Buttons */}
@@ -76,7 +107,7 @@ const Navbar = () => {
                   </div>
 
                   <button
-                    onClick={handleLoggout}
+                    onClick={handleLogout}
                     className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-600 hover:text-red-600 transition-colors"
                   >
                     <LogoutIcon className="w-4 h-4" />
@@ -124,7 +155,7 @@ const Navbar = () => {
               {auth?.user ? (
                 <>
                   <div>{auth.user?.name}</div>
-                  <button onClick={handleLoggout}>Logout</button>
+                  <button onClick={handleLogout}>Logout</button>
                 </>
               ) : (
                 <>
