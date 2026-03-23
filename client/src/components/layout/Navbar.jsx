@@ -150,7 +150,7 @@ const Navbar = () => {
               <NavLink to="/" onClick={() => setShowLinks(false)}>
                 Home
               </NavLink>
-              <div>Features</div>
+              <button onClick={scrollToFeatures}>Features</button>
 
               {auth?.user ? (
                 <>
