@@ -6,7 +6,7 @@ A full-stack authentication demo built using the **MERN stack** (MongoDB, Expres
 
 ## 🌐 Live Demo
 
-👉 **Frontend:** 
+👉 **Frontend:** [live@](https://al-auth-demo.vercel.app/)
 <!-- 👉 **Backend API:**  -->
 
 ---
