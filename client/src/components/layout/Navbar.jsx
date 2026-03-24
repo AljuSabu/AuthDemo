@@ -23,7 +23,7 @@ const Navbar = () => {
 
     setTimeout(() => {
       const section = document.getElementById("features");
-
+      setShowLinks(false)
       if (section) {
         const navbarHeight = 80;
 
