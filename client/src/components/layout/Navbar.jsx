@@ -23,7 +23,7 @@ const Navbar = () => {
 
     setTimeout(() => {
       const section = document.getElementById("features");
-      setShowLinks(false)
+      setShowLinks(false);
       if (section) {
         const navbarHeight = 80;
 
@@ -63,7 +63,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <nav className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm shadow-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative flex items-center h-16">
             {/* logo */}

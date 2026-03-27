@@ -18,19 +18,19 @@ const Layout = ({ description, keywords, author, title }) => {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <div className="flex flex-col relative overflow-hidden min-h-screen">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500 rounded-full blur-[120px]" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-400 rounded-full blur-[120px]" />
-        </div>
-
+      <div className="flex flex-col overflow-hidden min-h-screen">
         <Navbar />
 
-        <main className="grow pt-25 pb-15">
+        <main className="grow relative pt-25 pb-25">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500 rounded-full blur-[120px]" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-400 rounded-full blur-[120px]" />
+          </div>
           <Outlet />
         </main>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };
